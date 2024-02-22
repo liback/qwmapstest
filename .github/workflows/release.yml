@@ -14,8 +14,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Create archives
         run: |
-          find . -maxdepth 1 -type d ! -iname ".*" -print0|xargs -0 -I% -P$(nproc) bash -c 'cd % && zip -q -9 -r ../%.bsp * && echo "% complete."'
-          ls *.bsp||exit 1
+          zip maps.zip *.bsp
+          ls *.zip||exit 1
       - name: Remove tag and release
         uses: dev-drprasad/delete-tag-and-release@v0.2.1
         with:
